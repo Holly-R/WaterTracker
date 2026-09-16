@@ -1,0 +1,51 @@
+{
+  "events": [
+    {
+      "type": "Drink Log",
+      "date": "2023-09-10",
+      "time": "10:00",
+      "amountInMl": 500,
+      "drinkType": "tea"
+    },
+    {
+      "type": "Drink Log",
+      "date": "2023-09-10",
+      "time": "12:00",
+      "amountInMl": 500,
+      "drinkType": "water"
+    },
+    {
+      "type": "Drink Log",
+      "date": "2023-09-10",
+      "time": "15:00",
+      "amountInMl": 500,
+      "drinkType": "orange squash"
+    },{
+      "type": "Drink Log",
+      "date": "2023-09-10",
+      "time": "21:00",
+      "amountInMl": 500,
+      "drinkType": "coke"
+    },
+    {
+      "type": "Drink Log",
+      "date": "2023-09-12",
+      "time": "08:00",
+      "amountInMl": 500,
+      "drinkType": "tea"
+    },{
+      "type": "Drink Log",
+      "date": "2023-09-12",
+      "time": "10:00",
+      "amountInMl": 500,
+      "drinkType": "orange squash"
+    },
+    {
+      "type": "Drink Log",
+      "date": "2023-09-12",
+      "time": "16:00",
+      "amountInMl": 500,
+      "drinkType": "tea"
+    }
+  ]
+}
