@@ -12,6 +12,17 @@ app.get('/search', function(req,res){
     }
     res.send(data.events.filter(matchesSearch))
 })
+app.get('/total', function (req,res){
+    let totalAmount = data.events.reduce((accumulator, currentValue) => accumulator + currentValue.amountInMl, 0)
+    console.log(totalAmount)
+
+  res.send({total: totalAmount})
+})
+
+
+//    const totalAmountOnDate
+
+
 app.listen(3000, function(){
     console.log('Hello World!')
 })
