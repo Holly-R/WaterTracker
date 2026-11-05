@@ -27,7 +27,7 @@ function findEvent (req){
 
 const app = express() 
 app.use(express.json())
-app.get('/', function(req, res){
+app.get('/events', function(req, res){
     const query = database.prepare('SELECT * FROM Events');
     res.send(query.all());
 })
@@ -63,7 +63,12 @@ app.delete('/events/:id', function(req,res){
 
 app.get('/events/:id', function(req,res){
     const idQueryResult = findEvent(req)
-    res.send(idQueryResult)
+    if (idQueryResult) {
+ res.send(idQueryResult)
+    } else {
+        res.status(404).send()
+    }
+   
 })
 
 app.put('/events', createNewEvent)
@@ -81,7 +86,7 @@ app.put('/events/:id', function(req,res){
             date: payload.date, 
             amount_in_ml: payload.amount_in_ml, 
             drink_type: payload.drink_type,
-            id: req.params.id
+            id: parseInt(req.params.id, 10)
             })
         }
     } else {
