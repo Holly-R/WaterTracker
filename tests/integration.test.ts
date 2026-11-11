@@ -140,6 +140,35 @@ describe("GET /events", function () {
       id: 1,
     });
   });
+  it("Get from empty db", async () => {
+    // @ts-ignore
+    const res = await request(app)
+      .delete("/events/1")
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json");
+
+    expect(res.status).toBe(200);
+
+    // @ts-ignore
+    const res2 = await request(app)
+      .get("/events")
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json");
+
+    expect(res2.status).toBe(200);
+    expect(res.body).toEqual({})
+  });
+  it("Update entry that doesn't exist", async () => {
+    const res = await request(app)
+      .put("/events/5")
+      .set("Content-Type", "application/json")
+      .set("Accept", "application/json")
+      .send({
+        amount_in_ml: 500,
+        date: "2026-11-04 15:36:28",
+        drink_type: "tequila",
+      });
+
+    expect(res.status).toBe(404)
+    });
 });
-
-
