@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import database from '../database';
+import { DatabaseSync } from 'node:sqlite';
 import { findEvent } from '../helpers/findEvent';
 
-function getEventById (req: Request,res: Response){
-    const idQueryResult = findEvent(req)
+function getEventById (database: DatabaseSync, req: Request,res: Response){
+    const idQueryResult = findEvent(database, req)
     if (idQueryResult) {
  res.send(idQueryResult)
     } else {

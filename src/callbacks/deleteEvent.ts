@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import database from '../database';
+import { DatabaseSync } from 'node:sqlite';
 
-function deleteEvent (req: Request,res: Response){
+function deleteEvent (database: DatabaseSync, req: Request,res: Response){
     const deleteRequest = req.params
     console.log(deleteRequest)
     const deleteQuery = database.prepare('DELETE FROM Events WHERE id = ?')

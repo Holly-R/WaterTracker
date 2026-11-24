@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import database from '../database';
+import { DatabaseSync } from 'node:sqlite';
 
-function getAllEvents (req: Request, res: Response){
+function getAllEvents (database: DatabaseSync, res: Response){
     const query = database.prepare('SELECT * FROM Events');
     res.send(query.all());
 }

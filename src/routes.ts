@@ -1,6 +1,5 @@
 import express from 'express'
 import database from './database';
-import { BADFAMILY } from 'dns';
 import { getAllEvents } from './callbacks/getAllEvents';
 import { createNewEvent } from './callbacks/createNewEvent';
 import { deleteEvent} from './callbacks/deleteEvent';
@@ -9,7 +8,7 @@ import { putEvent } from './callbacks/putEvent';
 
 const app = express() 
 app.use(express.json())
-app.get('/events', getAllEvents)
+app.get('/events', (req, res) => getAllEvents(database, res))
 /*app.get('/search', function(req,res){
     const query = req.query.q as string
     const matchesSearch = function(event){
@@ -26,14 +25,14 @@ app.get('/total', function (req,res){
   res.send(query.all());
 })
 
-app.post('/events', createNewEvent)
+app.post('/events', (req, res) => createNewEvent(database, req, res))
 
-app.delete('/events/:id', deleteEvent)
+app.delete('/events/:id', (req, res) => deleteEvent(database, req, res))
 
-app.get('/events/:id', getEventById)
+app.get('/events/:id', (req, res) => getEventById(database, req, res))
 
-app.put('/events', createNewEvent)
+app.put('/events', (req, res) => createNewEvent(database, req, res))
 
-app.put('/events/:id', putEvent)
+app.put('/events/:id', (req, res) => putEvent(database, req, res))
 
 export {app}

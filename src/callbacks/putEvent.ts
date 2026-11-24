@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import database from '../database';
+import { DatabaseSync } from 'node:sqlite';
 import { findEvent } from '../helpers/findEvent';
 
-function putEvent (req: Request,res: Response){
+function putEvent (database: DatabaseSync, req: Request,res: Response){
     const event = findEvent(req)
     if (event){
         const payload = req.body

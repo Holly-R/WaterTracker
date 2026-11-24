@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import database from '../database';
+import { DatabaseSync } from 'node:sqlite';
 
-function createNewEvent (req: Request,res: Response){
+function createNewEvent (database: DatabaseSync, req: Request, res: Response){
    const payload = req.body
    const query = database.prepare('INSERT INTO Events(date, amount_in_ml, drink_type) VALUES(?,?,?)')
    const result = query.run(payload.date, payload.amount_in_ml, payload.drink_type)
